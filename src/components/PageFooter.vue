@@ -1,7 +1,11 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
-  <main>
-  </main>
+  <p>Page Footer</p>
 </template>
+
+<style scoped>
+
+</style>
