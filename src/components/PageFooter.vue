@@ -3,9 +3,9 @@
 </script>
 
 <template>
-  <div style="background-color: white; color: black">
-    <p>Page Footer</p>
-  </div>
+  <v-footer app>
+    <p>&copy;</p> Copyright 2023, Anton Grebnev
+  </v-footer>
 </template>
 
 <style scoped>
