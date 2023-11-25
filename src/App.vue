@@ -19,4 +19,7 @@ import PageFooter from "@/components/PageFooter.vue";
   justify-content: space-between;
   min-height: 100vh;
 }
+.content {
+  flex-grow: 1;
+}
 </style>

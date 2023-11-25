@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <p>Page Footer</p>
+  <div style="background-color: white; color: black">
+    <p>Page Footer</p>
+  </div>
 </template>
 
 <style scoped>
