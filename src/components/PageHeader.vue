@@ -24,7 +24,8 @@ export default defineComponent({
     const theme = useTheme()
 
     function toggleTheme() {
-      theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+      console.log(theme.global.name.value)
+      theme.global.name.value = theme.global.current.value ? 'light' : 'dark'
     }
 
     return {
