@@ -2,8 +2,8 @@
   <v-app-bar>
     <div style="width: 100%;display: flex; justify-content: space-between;align-items: center; padding: 10px">
       <div>
-        <p>Симулятор компьютерщика</p>
-        <p style="font-size: 12px">Добро пожаловать, {{ $props.name ? $props.name : 'No Name' }}!</p>
+        <p style="font-weight: bold; color: red">Симулятор обмана | Simulator of scam</p>
+<!--        <p style="font-size: 12px">Добро пожаловать, {{ $props.name ? $props.name : 'No Name' }}!</p>-->
       </div>
       <v-btn @click="toggleTheme" icon="mdi-theme-light-dark" variant="text"></v-btn>
     </div>
