@@ -1,26 +1,48 @@
 <template>
   <v-app>
-    <div class="wrapper">
-      <PageHeader :name="nameUser"/>
-      <PageContent/>
-      <PageFooter/>
-    </div>
+    <template v-if="state">
+      <div>is mobile</div>
+    </template>
+    <template v-else>
+      <div class="wrapper">
+        <PageHeader :name="nameUser"/>
+        <PageContent/>
+        <PageFooter/>
+      </div>
+    </template>
+
   </v-app>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import PageHeader from "@/components/PageHeader.vue";
 import PageContent from "@/components/PageContent.vue";
 import PageFooter from "@/components/PageFooter.vue";
+import {defineComponent, inject} from "vue";
 
 const nameUser = 'Пользователь';
+export default defineComponent({
+  name: 'App',
+  components: {
+    PageHeader,
+    PageContent,
+    PageFooter
+  }
+  ,
+  setup() {
+    const state = inject('state');
+    return {
+      nameUser,
+      state
+    }
+  }
+})
+
+
 </script>
 
 <style scoped>
 .wrapper {
-  //display: flex;
-  //flex-direction: column;
-  //justify-content: space-between;
-  min-height: 100vh;
+  display: flex;
 }
 </style>

@@ -1,4 +1,4 @@
-import {checkMobile} from "@/utils/utils";
+import {checkMobile} from "@/utils/helper_utils";
 
 class App {
     is_mobile = false;
@@ -9,4 +9,3 @@ class App {
 
 export const app = new App()
 window.addEventListener('resize', () => app.is_mobile = checkMobile())
-console.log(app.is_mobile)

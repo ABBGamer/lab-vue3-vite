@@ -44,7 +44,6 @@ export default defineComponent({
   setup() {
     const theme = useTheme()
     const drawer = ref(false)
-
     function toggleTheme() {
       console.log(theme.global.name.value)
       theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
