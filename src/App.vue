@@ -1,7 +1,9 @@
 <template>
   <v-app>
-    <template v-if="state">
-      <div>is mobile</div>
+    <template v-if="is_mobile">
+      <PageHeader :name="nameUser"/>
+      <PageContent/>
+      <PageFooter/>
     </template>
     <template v-else>
       <div class="wrapper">
@@ -18,7 +20,8 @@
 import PageHeader from "@/components/PageHeader.vue";
 import PageContent from "@/components/PageContent.vue";
 import PageFooter from "@/components/PageFooter.vue";
-import {defineComponent, inject} from "vue";
+import {defineComponent} from "vue";
+import {app} from "@/app_config";
 
 const nameUser = 'Пользователь';
 export default defineComponent({
@@ -27,18 +30,14 @@ export default defineComponent({
     PageHeader,
     PageContent,
     PageFooter
-  }
-  ,
+  },
   setup() {
-    const state = inject('state');
     return {
       nameUser,
-      state
+      is_mobile: app.is_mobile
     }
   }
 })
-
-
 </script>
 
 <style scoped>
