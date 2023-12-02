@@ -45,6 +45,6 @@ export default defineComponent({
 }
 
 .wrapper-mobile {
-  padding: 0 20px;
+  padding: 0 20px 50px 20px;
 }
 </style>

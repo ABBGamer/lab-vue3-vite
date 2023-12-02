@@ -35,10 +35,10 @@
       <h1 style="text-align: center">Добро пожаловать в Симулятор обмана</h1>
       <div>
         <div style="display: flex; justify-content: space-between; align-items: center">
-          <div>
-            <img src="/main.png" alt="main">
+          <div style="display: flex; align-items: center; width: 50%">
+            <img style="max-width: 100%" src="/main.png" alt="main">
           </div>
-          <div>
+          <div style=" width: 50%">
             <div style="text-align: justify; font-size: 20px">
               Место, где кликер денег становится безумным весельем! Здесь вы можете щелкать
               мышкой, чтобы заработать виртуальные деньги и затем тратить их на самые нелепые и безумные вещи в нашем
