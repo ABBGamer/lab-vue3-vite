@@ -13,7 +13,7 @@ const vuetify = createVuetify({
     components,
     directives,
     theme: {
-        defaultTheme: 'dark',
+        defaultTheme: window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light',
         themes: {
             light: {
                 colors: {
@@ -27,7 +27,6 @@ const vuetify = createVuetify({
         defaultSet: 'mdi',
     }
 })
-
 app.use(createPinia())
 app.use(router)
 app.use(vuetify)

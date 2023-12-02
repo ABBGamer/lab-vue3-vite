@@ -1,18 +1,10 @@
 <template>
   <v-app>
-    <template v-if="is_mobile">
+    <div v-bind:class="is_mobile?'wrapper-mobile':'wrapper-desktop'">
       <PageHeader :name="nameUser"/>
       <PageContent/>
       <PageFooter/>
-    </template>
-    <template v-else>
-      <div class="wrapper">
-        <PageHeader :name="nameUser"/>
-        <PageContent/>
-        <PageFooter/>
-      </div>
-    </template>
-
+    </div>
   </v-app>
 </template>
 
@@ -20,8 +12,10 @@
 import PageHeader from "@/components/PageHeader.vue";
 import PageContent from "@/components/PageContent.vue";
 import PageFooter from "@/components/PageFooter.vue";
-import {defineComponent} from "vue";
+import {defineComponent, onMounted, watch} from "vue";
 import {app} from "@/app_config";
+import {useTheme} from "vuetify";
+import {localTheme} from "@/app_store";
 
 const nameUser = 'Пользователь';
 export default defineComponent({
@@ -32,6 +26,10 @@ export default defineComponent({
     PageFooter
   },
   setup() {
+    const globalTheme = useTheme()
+    const syncTheme = () => globalTheme.global.name.value = localTheme.value
+    onMounted(() => syncTheme())
+    watch(localTheme, () => syncTheme())
     return {
       nameUser,
       is_mobile: app.is_mobile
@@ -41,7 +39,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.wrapper {
-  display: flex;
+.wrapper-desktop {
+  height: 100vh;
+  padding: 0 20px;
+}
+
+.wrapper-mobile {
+  padding: 0 20px;
 }
 </style>

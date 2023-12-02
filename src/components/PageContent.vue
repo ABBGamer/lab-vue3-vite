@@ -1,116 +1,99 @@
 <template>
   <div style="height: 68px"></div>
   <template v-if="is_mobile">
-    <div style="height: 100%">
-      <div style="padding: 10px; display: flex; align-items: center; flex-direction: column; margin-bottom: 40px">
-        <h1>Симулятор обмана</h1>
-        <img src="/main.png" alt="main-img" width="400">
-        <div style="    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: justify;"><b>Симулятор обмана</b> - это виртуальный мир, где обман и удача сливаются в увлекательном
-          симуляторе. Откройте для себя
-          мир возможностей, испытайте азарт и насладитесь виртуальными деньгами и предметами, которые вы можете получить
-          внутри игры. Присоединяйтесь к DeceptionSim и станьте настоящим мастером обмана!
-        </div>
-        <div style="font-size: 24px; text-align: justify">
-          Добро пожаловать на сайт <b>Симулятор обмана</b> - захватывающий веб-сайт, предлагающий уникальный симулятор
-          обмана! Здесь вы сможете погрузиться в виртуальный мир и насладиться различными игровыми возможностями,
-          связанными
-          с обманом и удачей.
-        </div>
-        <div style="text-align: justify; margin-top: 25px">
-          Тут Вас ждет захватывающий кликер, где вы сможете зарабатывать виртуальные деньги, нажимая на экран.
-          Используйте свои навыки и стратегии, чтобы максимизировать свои заработки и стать самым богатым обманщиком
-          виртуального мира. <br>
-          Кроме кликера, вас ждут захватывающие рулетки с предметами из различных игр. Вы сможете испытать свою удачу и
-          надежду на получение ценных предметов, которые будут доступны для продажи внутри игровой экономики.
-          Симулятор обмана также предлагает вам вступить в мир казино и попробовать свои силы в азартных играх. <br>
-          Вы сможете сыграть в популярные игры, такие как покер, блэкджек и рулетка, и испытать адреналин, связанный с
-          рискованными
-          ставками и возможностью выиграть виртуальные деньги.
-        </div>
-        <div style="text-align: justify; padding: 20px; border: 5px solid red; border-radius: 25px; margin-top: 25px">
-          <b>Примечание:</b> <br> <b>Симулятор обмана</b> разработан исключительно для развлекательных целей.
-          Внутриигровые
-          деньги и предметы
-          являются виртуальными и не могут быть обменены на реальные деньги или товары. Пожалуйста, играйте ответственно
-          и
-          помните о важности разумного использования времени и ресурсов.
-        </div>
+    <div style="">
+      <h1 style="text-align: center">Добро пожаловать</h1>
+      <div style="text-align: justify">
+        Место, где кликер денег становится безумным весельем! Здесь вы можете щелкать
+        мышкой, чтобы заработать виртуальные деньги и затем тратить их на самые нелепые и безумные вещи в нашем
+        магазине.
+        У нас также есть казино, где вы можете испытать свою удачу и выиграть еще больше виртуальных богатств!
+        Откройте
+        для себя безграничное разнообразие виртуальных товаров и наслаждайтесь азартным безумием!
       </div>
+      <div style="display: flex; justify-content: center">
+        <img src="/main.png" alt="main" width="300">
+      </div>
+      <div
+          style="display: flex; align-items: center; justify-content: center; flex-direction: column; border: white 2px solid; border-radius: 25px">
+        <div style="font-size: 32px; font-weight: bold">{{ money }} ₽</div>
+        <v-btn @click="addMoney" size="x-large" :icon="is_mobile?'mdi-gesture-tap':'mdi-cursor-default-click-outline'"
+               variant="text"></v-btn>
+      </div>
+      <div style="margin-top: 20px; border: 2px solid red; padding: 15px; border-radius: 25px">
+        **Примечание:**<br>
+        Симулятор обмана предназначен только для развлекательных целей. Виртуальные деньги и товары не имеют реальной
+        ценности
+        и не могут быть обменены на реальные деньги или товары. Пожалуйста, играйте ответственно и помните, что здесь
+        главное - веселье и разрядка!
+      </div>
+
     </div>
   </template>
-  <template v-if="!is_mobile">
-    <div
-        style=" display: flex; flex-direction: column; align-items: center;flex-grow: 1; width: 960px; margin: 0 auto; padding: 20px 50px">
-      <h1 style="text-align: center; font-weight: bold">
-        Симулятор обмана | Simulator of scam
-      </h1>
-      <div style="width: 100%; display: flex; justify-content: space-around; margin-top: 25px">
-        <div>
-          <img src="/main.png" alt="main-img" width="400">
+  <template v-else>
+    <div style="padding-bottom: 60px">
+      <h1 style="text-align: center">Добро пожаловать в Симулятор обмана</h1>
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center">
+          <div>
+            <img src="/main.png" alt="main">
+          </div>
+          <div>
+            <div style="text-align: justify; font-size: 20px">
+              Место, где кликер денег становится безумным весельем! Здесь вы можете щелкать
+              мышкой, чтобы заработать виртуальные деньги и затем тратить их на самые нелепые и безумные вещи в нашем
+              магазине.
+              У нас также есть казино, где вы можете испытать свою удачу и выиграть еще больше виртуальных богатств!
+              Откройте
+              для себя безграничное разнообразие виртуальных товаров и наслаждайтесь азартным безумием!
+            </div>
+            <div style="margin-top: 20px; border: 2px solid red; padding: 15px; border-radius: 25px">
+              **Примечание:**<br>
+              Симулятор обмана предназначен только для развлекательных целей. Виртуальные деньги и товары не имеют
+              реальной
+              ценности
+              и не могут быть обменены на реальные деньги или товары. Пожалуйста, играйте ответственно и помните, что
+              здесь
+              главное - веселье и разрядка!
+            </div>
+            <div
+                style="margin-top: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; border: white 2px solid; border-radius: 25px">
+              <div style="font-size: 32px; font-weight: bold">{{ money }} ₽</div>
+              <v-btn @click="addMoney" size="x-large" :icon="is_mobile?'mdi-gesture-tap':'mdi-cursor-default-click-outline'"
+                     variant="text"></v-btn>
+            </div>
+          </div>
         </div>
-        <div style="    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: justify;"><b>Симулятор обмана</b> - это виртуальный мир, где обман и удача сливаются в увлекательном
-          симуляторе. Откройте для себя
-          мир возможностей, испытайте азарт и насладитесь виртуальными деньгами и предметами, которые вы можете получить
-          внутри игры. Присоединяйтесь к DeceptionSim и станьте настоящим мастером обмана!
-        </div>
+
       </div>
-      <div style="font-size: 24px; text-align: justify">
-        Добро пожаловать на сайт <b>Симулятор обмана</b> - захватывающий веб-сайт, предлагающий уникальный симулятор
-        обмана! Здесь вы сможете погрузиться в виртуальный мир и насладиться различными игровыми возможностями,
-        связанными
-        с обманом и удачей.
-      </div>
-      <div style="text-align: justify; margin-top: 25px">
-        Тут Вас ждет захватывающий кликер, где вы сможете зарабатывать виртуальные деньги, нажимая на экран.
-        Используйте свои навыки и стратегии, чтобы максимизировать свои заработки и стать самым богатым обманщиком
-        виртуального мира. <br>
-        Кроме кликера, вас ждут захватывающие рулетки с предметами из различных игр. Вы сможете испытать свою удачу и
-        надежду на получение ценных предметов, которые будут доступны для продажи внутри игровой экономики.
-        Симулятор обмана также предлагает вам вступить в мир казино и попробовать свои силы в азартных играх. <br>
-        Вы сможете сыграть в популярные игры, такие как покер, блэкджек и рулетка, и испытать адреналин, связанный с
-        рискованными
-        ставками и возможностью выиграть виртуальные деньги.
-      </div>
-      <div style="text-align: justify; padding: 20px; border: 5px solid red; border-radius: 25px; margin-top: 25px">
-        <b>Примечание:</b> <br> <b>Симулятор обмана</b> разработан исключительно для развлекательных целей.
-        Внутриигровые
-        деньги и предметы
-        являются виртуальными и не могут быть обменены на реальные деньги или товары. Пожалуйста, играйте ответственно и
-        помните о важности разумного использования времени и ресурсов.
-      </div>
+
     </div>
   </template>
 
 
-  <!--  <div style="flex-grow: 1; display: flex;align-items: center;justify-content: center">-->
-  <!--    <div style="display: flex; flex-direction: column; align-items: center">-->
-  <!--      <div style="font-size: 32px; font-weight: bold">{{ score }} ₽</div>-->
-  <!--      <v-btn size="x-large" @click="console.log('click')" icon="mdi-gesture-tap" variant="text"></v-btn>-->
-  <!--      <v-btn @click="addMoney" icon="mdi-cursor-default-click-outline" variant="text"></v-btn>-->
-  <!--    </div>-->
-  <!--  </div>-->
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
 import {app} from "@/app_config";
+import {money, price, salary} from "@/app_store";
 
 export default defineComponent({
   data() {
+    const addMoney = () => money.value += salary.value
     return {
-      score: 0,
+      addMoney,
+      money,
       is_mobile: app.is_mobile
     }
   },
   methods: {
-    addMoney() {
-      this.score++
+    addSalary() {
+      if (money.value - price.value > 0) {
+        money.value -= price.value;
+        price.value = Math.round(price.value * 1.7);
+        salary.value += 1;
+      }
     }
   }
 })

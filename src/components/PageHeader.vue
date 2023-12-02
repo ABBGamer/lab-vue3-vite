@@ -8,15 +8,31 @@
         </v-main>
       </v-layout>
     </v-card>
-    <div style="width: 100%;display: flex; justify-content: space-between;align-items: center; padding: 10px">
+    <div style="padding: 0 5px; display: flex; align-items: center; justify-content: space-between; width: 100%">
       <v-btn @click.stop="drawer = !drawer" icon="mdi-menu" variant="text"></v-btn>
-      <div style="display: flex; flex-direction: column; align-items: center">
-        <p style="font-weight: bold; color: red">Симулятор обмана | Simulator of scam</p>
-        <p style="font-size: 12px">Добро пожаловать, {{ $props.name ? $props.name : 'No Name' }}!</p>
+      <div style="width: 100%;display: flex; align-items: center; flex-direction: column">
+        <p style="font-weight: bold; color: red;width: 100%; text-align: center">
+          {{ is_mobile ? 'Симулятор обмана' : 'Симулятор обмана | Simulator of scam' }}</p>
+        <p style="font-size: 12px">{{ $props.name ? $props.name : 'No Name' }}</p>
+
+        <div style="font-size: 12px"> Ваши деньги: {{ money }}</div>
       </div>
-      <v-btn @click="toggleTheme" icon="mdi-theme-light-dark" variant="text"></v-btn>
+      <template v-if="is_mobile">
+        <v-btn @click="toggleTheme" v-model="localTheme" icon="mdi-theme-light-dark"
+               variant="text"></v-btn>
+      </template>
+      <template v-if="!is_mobile">
+        <v-switch style="min-width: 130px; margin-top: 13px;"
+                  inset
+                  v-model="localTheme"
+                  true-value="dark"
+                  false-value="light"
+                  :label="displayLabel"
+        ></v-switch>
+      </template>
     </div>
   </v-app-bar>
+
   <v-navigation-drawer
       v-model="drawer"
   >
@@ -33,8 +49,11 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from "vue";
+import {computed, defineComponent, ref} from "vue";
 import {useTheme} from "vuetify";
+import {localTheme, money} from "@/app_store";
+import {app} from "@/app_config";
+import {setLS} from "@/utils/helper_utils";
 
 export default defineComponent({
   name: "PageHeader",
@@ -44,14 +63,24 @@ export default defineComponent({
   setup() {
     const theme = useTheme()
     const drawer = ref(false)
+    const is_mobile = app.is_mobile
+    const displayLabel = computed(() => is_mobile ? '' : localTheme.value === "dark" ? 'Темная' : 'Cветлая')
+
+
     function toggleTheme() {
-      console.log(theme.global.name.value)
+      setLS('theme', theme.global.current.value.dark ? 'light' : 'dark')
       theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
     }
 
     return {
-      toggleTheme,
+      is_mobile,
       drawer,
+      displayLabel,
+
+      toggleTheme,
+
+      localTheme,
+      money: money,
     }
   }
 })
