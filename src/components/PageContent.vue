@@ -14,12 +14,12 @@
       <div style="display: flex; justify-content: center">
         <img src="/main.png" alt="main" width="300">
       </div>
-      <div
-          style="display: flex; align-items: center; justify-content: center; flex-direction: column; border: white 2px solid; border-radius: 25px">
-        <div style="font-size: 32px; font-weight: bold">{{ money }} ₽</div>
-        <v-btn @click="addMoney" size="x-large" :icon="is_mobile?'mdi-gesture-tap':'mdi-cursor-default-click-outline'"
-               variant="text"></v-btn>
-      </div>
+<!--      <div-->
+<!--          style="display: flex; align-items: center; justify-content: center; flex-direction: column; border: white 2px solid; border-radius: 25px">-->
+<!--        <div style="font-size: 32px; font-weight: bold">{{ money }} ₽</div>-->
+<!--        <v-btn @click="addMoney" size="x-large" :icon="is_mobile?'mdi-gesture-tap':'mdi-cursor-default-click-outline'"-->
+<!--               variant="text"></v-btn>-->
+<!--      </div>-->
       <div style="margin-top: 20px; border: 2px solid red; padding: 15px; border-radius: 25px">
         **Примечание:**<br>
         Симулятор обмана предназначен только для развлекательных целей. Виртуальные деньги и товары не имеют реальной
@@ -35,7 +35,7 @@
       <h1 style="text-align: center">Добро пожаловать в Симулятор обмана</h1>
       <div>
         <div style="display: flex; justify-content: space-between; align-items: center">
-          <div style="display: flex; align-items: center; width: 50%">
+          <div style="display: flex; align-items: center; width: 50%; padding-right: 20px">
             <img style="max-width: 100%" src="/main.png" alt="main">
           </div>
           <div style=" width: 50%">
@@ -56,12 +56,13 @@
               здесь
               главное - веселье и разрядка!
             </div>
-            <div
-                style="margin-top: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; border: white 2px solid; border-radius: 25px">
-              <div style="font-size: 32px; font-weight: bold">{{ money }} ₽</div>
-              <v-btn @click="addMoney" size="x-large" :icon="is_mobile?'mdi-gesture-tap':'mdi-cursor-default-click-outline'"
-                     variant="text"></v-btn>
-            </div>
+<!--            <div-->
+<!--                style="margin-top: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; border: white 2px solid; border-radius: 25px">-->
+<!--              <div style="font-size: 32px; font-weight: bold">{{ money }} ₽</div>-->
+<!--              <v-btn @click="addMoney" size="x-large"-->
+<!--                     :icon="is_mobile?'mdi-gesture-tap':'mdi-cursor-default-click-outline'"-->
+<!--                     variant="text"></v-btn>-->
+<!--            </div>-->
           </div>
         </div>
 
@@ -81,7 +82,27 @@ import {money, price, salary} from "@/app_store";
 export default defineComponent({
   data() {
     const addMoney = () => money.value += salary.value
+    const cards = [
+      {
+        title: 'Homemade Dulce de Leche Ice Cream with Chocolate Chips',
+        subtitle: 'Happy Foods',
+        src: 'https://cdn.vuetifyjs.com/docs/images/graphics/dulce-ice-cream.png',
+      },
+      {
+        title: 'Salted Caramel Swirl Ice Cream',
+        subtitle: 'Stone Kitchen',
+        src: 'https://cdn.vuetifyjs.com/docs/images/graphics/salted-caramel-ice-cream.png',
+      },
+      {
+        title: 'Peanut Butter No-Churn Ice Cream',
+        subtitle: 'The Sweeter Side',
+        src: 'https://cdn.vuetifyjs.com/docs/images/graphics/peanut-butter-ice-cream.png',
+      },
+    ]
+    const loading = true
     return {
+      cards,
+      loading,
       addMoney,
       money,
       is_mobile: app.is_mobile
