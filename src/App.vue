@@ -2,7 +2,7 @@
   <v-app>
     <div v-bind:class="is_mobile?'wrapper-mobile':'wrapper-desktop'">
       <PageHeader :name="nameUser"/>
-      <PageContent/>
+      <RouterView/>
       <PageFooter/>
     </div>
   </v-app>
@@ -10,7 +10,6 @@
 
 <script lang="ts">
 import PageHeader from "@/components/PageHeader.vue";
-import PageContent from "@/components/PageContent.vue";
 import PageFooter from "@/components/PageFooter.vue";
 import {defineComponent, onMounted, watch} from "vue";
 import {app} from "@/app_config";
@@ -22,7 +21,6 @@ export default defineComponent({
   name: 'App',
   components: {
     PageHeader,
-    PageContent,
     PageFooter
   },
   setup() {

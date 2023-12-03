@@ -1,11 +1,12 @@
 <template>
   <div style="height: 68px"></div>
-  <h1>This is an about page</h1>
+  <h1>This is an news page</h1>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 
 </script>
+
 
 <style>
 

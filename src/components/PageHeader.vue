@@ -9,7 +9,7 @@
       </v-layout>
     </v-card>
     <div style="padding: 0 5px; display: flex; align-items: center; justify-content: space-between; width: 100%">
-      <v-btn @click.stop="drawer = !drawer" icon="mdi-menu" variant="text"></v-btn>
+      <v-btn @click.stop="drawer = !drawer" icon="mdi-menu" variant="plain"></v-btn>
       <div style="width: 100%;display: flex; align-items: center; flex-direction: column">
         <p style="font-weight: bold; color: red;width: 100%; text-align: center">
           {{ is_mobile ? 'Симулятор обмана' : 'Симулятор обмана | Simulator of scam' }}</p>
@@ -19,7 +19,7 @@
       </div>
       <template v-if="is_mobile">
         <v-btn @click="toggleTheme" v-model="localTheme" icon="mdi-theme-light-dark"
-               variant="text"></v-btn>
+               variant="plain"></v-btn>
       </template>
       <template v-if="!is_mobile">
         <v-switch style="min-width: 130px; margin-top: 13px;"
@@ -42,8 +42,16 @@
     ></v-list-item>
     <v-divider></v-divider>
     <v-list density="compact" nav>
-      <v-list-item prepend-icon="mdi-home" title="Главная" value="home"></v-list-item>
-      <v-list-item prepend-icon="mdi-information" title="Информация" value="about"></v-list-item>
+      <router-link style="text-decoration: none;" to="/">
+        <v-list-item prepend-icon="mdi-home" title="Главная" value="home"></v-list-item>
+      </router-link>
+      <router-link style="text-decoration: none;" to="news">
+        <v-list-item prepend-icon="mdi-newspaper" title="Новости" value="news"></v-list-item>
+      </router-link>
+      <router-link style="text-decoration: none;" to="about">
+        <v-list-item prepend-icon="mdi-information" title="Информация" value="about"></v-list-item>
+      </router-link>
+
     </v-list>
   </v-navigation-drawer>
 </template>

@@ -1,5 +1,6 @@
 <template>
   <div style="height: 68px"></div>
+  <!--  mobile-->
   <template v-if="is_mobile">
     <div style="">
       <h1 style="text-align: center">Добро пожаловать</h1>
@@ -14,12 +15,12 @@
       <div style="display: flex; justify-content: center">
         <img src="/main.png" alt="main" width="300">
       </div>
-<!--      <div-->
-<!--          style="display: flex; align-items: center; justify-content: center; flex-direction: column; border: white 2px solid; border-radius: 25px">-->
-<!--        <div style="font-size: 32px; font-weight: bold">{{ money }} ₽</div>-->
-<!--        <v-btn @click="addMoney" size="x-large" :icon="is_mobile?'mdi-gesture-tap':'mdi-cursor-default-click-outline'"-->
-<!--               variant="text"></v-btn>-->
-<!--      </div>-->
+      <!--      <div-->
+      <!--          style="display: flex; align-items: center; justify-content: center; flex-direction: column; border: white 2px solid; border-radius: 25px">-->
+      <!--        <div style="font-size: 32px; font-weight: bold">{{ money }} ₽</div>-->
+      <!--        <v-btn @click="addMoney" size="x-large" :icon="is_mobile?'mdi-gesture-tap':'mdi-cursor-default-click-outline'"-->
+      <!--               variant="text"></v-btn>-->
+      <!--      </div>-->
       <div style="margin-top: 20px; border: 2px solid red; padding: 15px; border-radius: 25px">
         **Примечание:**<br>
         Симулятор обмана предназначен только для развлекательных целей. Виртуальные деньги и товары не имеют реальной
@@ -30,6 +31,7 @@
 
     </div>
   </template>
+  <!--  desktop-->
   <template v-else>
     <div style="padding-bottom: 60px">
       <h1 style="text-align: center">Добро пожаловать в Симулятор обмана</h1>
@@ -56,32 +58,40 @@
               здесь
               главное - веселье и разрядка!
             </div>
-<!--            <div-->
-<!--                style="margin-top: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; border: white 2px solid; border-radius: 25px">-->
-<!--              <div style="font-size: 32px; font-weight: bold">{{ money }} ₽</div>-->
-<!--              <v-btn @click="addMoney" size="x-large"-->
-<!--                     :icon="is_mobile?'mdi-gesture-tap':'mdi-cursor-default-click-outline'"-->
-<!--                     variant="text"></v-btn>-->
-<!--            </div>-->
+
+            <!--            <div-->
+            <!--                style="margin-top: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; border: white 2px solid; border-radius: 25px">-->
+            <!--              <div style="font-size: 32px; font-weight: bold">{{ money }} ₽</div>-->
+            <!--              <v-btn @click="addMoney" size="x-large"-->
+            <!--                     :icon="is_mobile?'mdi-gesture-tap':'mdi-cursor-default-click-outline'"-->
+            <!--                     variant="text"></v-btn>-->
+            <!--            </div>-->
           </div>
         </div>
-
+        <div style="display: flex;align-items: center;flex-direction: column">
+          <h1>Новости проекта [в разработке] </h1>
+          <VBtn @click="isShow = !isShow">{{ isShow ? 'Скрыть' : 'Показать' }}</VBtn>
+          <ul v-if="isShow">
+            <li v-for="post in posts()" :key="post.id">{{ post.post }}</li>
+          </ul>
+          <p v-else>На данном этапе разработки {{posts().length}} тестовых постов</p>
+        </div>
       </div>
-
     </div>
   </template>
-
 
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
+import {defineComponent, ref} from "vue";
 import {app} from "@/app_config";
 import {money, price, salary} from "@/app_store";
+import {posts} from "@/mock/posts";
 
 export default defineComponent({
   data() {
     const addMoney = () => money.value += salary.value
+    const isShow = ref(false)
     const cards = [
       {
         title: 'Homemade Dulce de Leche Ice Cream with Chocolate Chips',
@@ -103,12 +113,16 @@ export default defineComponent({
     return {
       cards,
       loading,
+      isShow,
       addMoney,
       money,
       is_mobile: app.is_mobile
     }
   },
   methods: {
+    posts() {
+      return posts
+    },
     addSalary() {
       if (money.value - price.value > 0) {
         money.value -= price.value;
