@@ -4,6 +4,7 @@ import AboutView from "@/views/AboutView.vue";
 import OneNewsView from "@/views/OneNewsView/OneNewsView.vue";
 import ClickerView from "@/views/ClickerView/ClickerView.vue";
 import HomeView from "@/views/HomeView.vue";
+import AuthView from "@/views/AuthView.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
             path: '/about',
             name: 'about',
             component: AboutView
+        },
+        {
+            path: '/auth',
+            name: 'auth',
+            component: AuthView
         }
     ]
 })

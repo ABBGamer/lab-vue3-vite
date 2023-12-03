@@ -5,9 +5,10 @@ export const money = ref(+getLS('money', 0));
 export const salary = ref(+getLS('salary', 1))
 export const price = ref(+getLS('price', 10))
 export const localTheme = ref(getLS('theme', 'light'))
-
+export const auth = ref(getLS('auth', false))
 
 watch(money, (value) => setLS('money', value))
 watch(salary, (value) => setLS('salary', value))
 watch(price, (value) => setLS('price', value))
 watch(localTheme, (value) => setLS('theme', value))
+watch(auth, (value) => setLS('auth', value))

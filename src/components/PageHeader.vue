@@ -13,8 +13,8 @@
       <div style="width: 100%;display: flex; align-items: center; flex-direction: column">
         <p style="font-weight: bold; color: red;width: 100%; text-align: center">
           {{ is_mobile ? 'Симулятор обмана' : 'Симулятор обмана | Simulator of scam' }}</p>
-        <p style="font-size: 12px">{{ $props.name ? $props.name : 'No Name' }}</p>
-
+        <p v-if="auth" style="font-size: 12px">{{ $props.name ? $props.name : 'No Name' }}</p>
+        <RouterLink v-if="!auth" style="font-size: 12px" to="/auth">Авторизируйтесь</RouterLink>
         <div v-if="money!=0" style="font-size: 12px"> Ваши деньги: {{ money }}</div>
       </div>
       <template v-if="is_mobile">
@@ -34,7 +34,7 @@
   </v-app-bar>
 
   <v-navigation-drawer v-model="drawer">
-    <v-list-item
+    <v-list-item v-if="auth"
         prepend-avatar="https://cdn1.flamp.ru/a5c123d2ff93fe9097ce208e8660e8a8.jpg"
         :title="$props.name ? $props.name : 'No Name'"
     ></v-list-item>
@@ -67,12 +67,13 @@
 <script lang="ts">
 import {computed, defineComponent, ref} from "vue";
 import {useTheme} from "vuetify";
-import {localTheme, money} from "@/app_store";
+import {auth, localTheme, money} from "@/app_store";
 import {app} from "@/app_config";
 import {setLS} from "@/utils/helper_utils";
 
 export default defineComponent({
   name: "PageHeader",
+  methods: {auth},
   props: {
     name: String
   },

@@ -1,7 +1,5 @@
 <template>
-  <div :class="is_mobile ? 'wrapper-mobile' : 'wrapper-desktop'">
     <RouterView/>
-  </div>
 </template>
 
 <script lang="ts">
