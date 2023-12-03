@@ -15,7 +15,7 @@
           {{ is_mobile ? 'Симулятор обмана' : 'Симулятор обмана | Simulator of scam' }}</p>
         <p style="font-size: 12px">{{ $props.name ? $props.name : 'No Name' }}</p>
 
-        <div style="font-size: 12px"> Ваши деньги: {{ money }}</div>
+        <div v-if="money!=0" style="font-size: 12px"> Ваши деньги: {{ money }}</div>
       </div>
       <template v-if="is_mobile">
         <v-btn @click="toggleTheme" v-model="localTheme" icon="mdi-theme-light-dark"
@@ -33,25 +33,33 @@
     </div>
   </v-app-bar>
 
-  <v-navigation-drawer
-      v-model="drawer"
-  >
+  <v-navigation-drawer v-model="drawer">
     <v-list-item
         prepend-avatar="https://cdn1.flamp.ru/a5c123d2ff93fe9097ce208e8660e8a8.jpg"
         :title="$props.name ? $props.name : 'No Name'"
     ></v-list-item>
     <v-divider></v-divider>
     <v-list density="compact" nav>
-      <router-link style="text-decoration: none;" to="/">
-        <v-list-item prepend-icon="mdi-home" title="Главная" value="home"></v-list-item>
-      </router-link>
-      <router-link style="text-decoration: none;" to="news">
-        <v-list-item prepend-icon="mdi-newspaper" title="Новости" value="news"></v-list-item>
-      </router-link>
-      <router-link style="text-decoration: none;" to="about">
-        <v-list-item prepend-icon="mdi-information" title="Информация" value="about"></v-list-item>
-      </router-link>
-
+      <v-list-item @click="$router.push('/')"
+                   prepend-icon="mdi-home"
+                   title="Главная"
+                   value="home"
+      ></v-list-item>
+      <v-list-item @click="$router.push('/news')"
+                   prepend-icon="mdi-newspaper"
+                   title="Новости"
+                   value="news"
+      ></v-list-item>
+      <v-list-item @click="$router.push('/clicker')"
+                   prepend-icon="mdi-cash"
+                   title="Кликер"
+                   value="clicker"
+      ></v-list-item>
+      <v-list-item @click="$router.push('/about')"
+                   prepend-icon="mdi-information"
+                   title="Информация"
+                   value="about"
+      ></v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>

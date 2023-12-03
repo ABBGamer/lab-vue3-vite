@@ -2,7 +2,7 @@
   <v-app>
     <div v-bind:class="is_mobile?'wrapper-mobile':'wrapper-desktop'">
       <PageHeader :name="nameUser"/>
-      <RouterView/>
+      <PageContent/>
       <PageFooter/>
     </div>
   </v-app>
@@ -15,11 +15,13 @@ import {defineComponent, onMounted, watch} from "vue";
 import {app} from "@/app_config";
 import {useTheme} from "vuetify";
 import {localTheme} from "@/app_store";
+import PageContent from "@/components/PageContent.vue";
 
 const nameUser = 'Пользователь';
 export default defineComponent({
   name: 'App',
   components: {
+    PageContent,
     PageHeader,
     PageFooter
   },
@@ -37,12 +39,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.wrapper-desktop {
-  height: 100vh;
-  padding: 0 20px;
-}
 
-.wrapper-mobile {
-  padding: 0 20px 50px 20px;
-}
 </style>
