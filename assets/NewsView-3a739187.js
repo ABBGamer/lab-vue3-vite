@@ -1,0 +1,1 @@
+import{_ as s,o as t,c as n,F as a,a as e}from"./index-8094dbfe.js";const c={},o=e("div",{style:{height:"68px"}},null,-1),r=e("h1",null,"This is an NewsView page",-1);function _(i,l){return t(),n(a,null,[o,r],64)}const h=s(c,[["render",_]]);export{h as default};

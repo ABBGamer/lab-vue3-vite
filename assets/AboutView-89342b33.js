@@ -1,0 +1,1 @@
+import{_ as t,o as s,c as o,F as a,a as e}from"./index-8094dbfe.js";const n={},c=e("div",{style:{height:"68px"}},null,-1),r=e("h1",null,"This is an about page",-1);function _(l,i){return s(),o(a,null,[c,r],64)}const d=t(n,[["render",_]]);export{d as default};
